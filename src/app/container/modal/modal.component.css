@@ -1,0 +1,11 @@
+.birthday{
+    display: flex;
+    flex-direction: row;
+
+}
+
+label{
+    font-weight: bold;
+    font-size: 0.8em;
+    color: #3149AB;
+}

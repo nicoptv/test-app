@@ -1,0 +1,101 @@
+#card_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+  
+  }
+    
+  h2{
+    font-weight: bold;
+    font-size: 1.286em;
+    color: #3149AB;
+  }
+
+  #search_text{
+    margin-left: 10px;
+  }
+
+  /*Global style*/
+  *{
+    font-family: "Lato-Black", sans-serif;
+  }
+
+  .centered{
+    text-align: center;
+  }
+  
+  /*Container component*/
+  .container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  
+  /*CSS CARD PROFILE*/
+  #title_container{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+  } 
+  
+  .card{
+    margin-top: 10px;
+    box-shadow: 5px 5px 5px grey;
+  }
+  
+  .card h4{
+    font-size: 1.286em;
+  }
+  
+  .card h5{
+    font-size: 1em;
+    color: #636363;
+  }
+  
+  
+  .card img{
+      display: block;
+      margin-top: 5%;
+      margin-bottom: 10%;
+      margin-left: auto;
+      margin-right: auto;
+      width: 40%;
+      border-radius: 100px;
+  }
+  .card:hover{
+    background-color: black ;
+    color: white;
+  }
+  
+  .img-profile{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+  }
+  
+  button.hs-button{
+    padding: 1em 4em;
+    border: none;
+    border-radius: 25px;
+    background-color: #1D357C;
+    color: white;
+  }
+  
+  button.hs-button:hover{
+    background-color: rgb(47, 84, 194);
+    cursor: pointer;
+  }
+  
+  
+  .task_bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+  }
+  
+  
+  
+  

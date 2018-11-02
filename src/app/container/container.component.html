@@ -1,0 +1,39 @@
+<div class="container">
+    <div class="row">
+        <div class="input-group col-md-5">
+          <div class="input-group-prepend">
+            <img src="../../assets/baseline-search-24px.svg" alt="">
+          </div>
+          <input type="text" placeholder="Search" class="form-control" [(ngModel)]="search">
+        </div>
+    </div>
+    <br/>
+    <div id="title_container">
+      <img src="../../assets/baseline-perm_identity-24px.svg" alt="">
+      <h2>Customers</h2>
+    </div>
+    <button class="hs-button primary small" (click)="open(content)">
+            Add
+    </button>
+    <ngbd-modal-basic #content></ngbd-modal-basic>
+    <hr>
+    <div id="card_container">
+      <div *ngFor="let user of users ; let i = index;" class="card" style="width: 18rem;">
+          <div class="img_profile">
+              <img width="126" height="126" src="https://image.freepik.com/free-icon/user-profile-icon_318-33925.jpg" class="img-responsive  wp-post-image" alt="Charles Assaf">
+              <h4 class="card-title centered">{{user.name}} {{user.family}}</h4>
+              <h5 *ngIf="user.birthday" class="card-subtitle mb-2 text-muted centered">{{user.birthday.day}}/{{user.birthday.month}}/{{user.birthday.year}}</h5>
+          </div>
+          <div class="card-body">
+            <div class="task_bar">
+                <button class="btn btn-dark" (click)="setEditUser(i)" type="button" value="Add">
+                    Edit
+                </button>
+                <button class="btn btn-dark" (click)="delete(i)" type="button" value="Add">
+                    Delete
+                </button>
+            </div>
+          </div>
+        </div>
+    </div>
+</div>
