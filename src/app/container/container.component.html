@@ -1,20 +1,20 @@
 <div class="container">
-    <div class="row">
-        <div class="input-group col-md-5">
-          <div class="input-group-prepend">
-            <img src="../../assets/baseline-search-24px.svg" alt="">
-          </div>
-          <input type="text" placeholder="Search" class="form-control" [(ngModel)]="search">
-        </div>
-    </div>
-    <br/>
     <div id="title_container">
       <img src="../../assets/baseline-perm_identity-24px.svg" alt="">
       <h2>Customers</h2>
     </div>
-    <button class="hs-button primary small" (click)="content.open()">
-            Add
-    </button>
+    <div id="add_search_bar">
+        <button class="hs-button primary small" (click)="content.open()">
+                Add
+        </button>
+        <div class="input-group col-md-3">
+            <div class="input-group-prepend">
+                <img src="../../assets/baseline-search-24px.svg" alt="">
+            </div>
+            <input type="text" placeholder="Search" class="form-control" [(ngModel)]="search">
+        </div>
+    </div>
+    
 
     <ngbd-modal-basic #content></ngbd-modal-basic>
     <hr>
