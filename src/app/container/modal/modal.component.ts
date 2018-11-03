@@ -58,10 +58,12 @@ export class NgbdModalBasic {
       {
         this.user = new User(result.controls['name'].value,result.controls['family'].value,this.index,result.controls['birthday'].value,result.controls['numberOfChild'].value)
         this.userService.edit(this.user,this.index);
+        this.index = null;
       }else
       {
         this.user = new User(result.controls['name'].value,result.controls['family'].value,0,result.controls['birthday'].value,result.controls['numberOfChild'].value);
         this.userService.add(this.user);
+        this.index = null;
       }
       this.user = new User(result.get("name").value,result.get("family").value,);
     }, (reason) => {
