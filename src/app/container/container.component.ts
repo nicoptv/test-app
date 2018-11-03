@@ -3,6 +3,7 @@ import { User } from '../shared/models/user.model';
 import { LocalDate } from '../shared/models/localdate.model';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { FilterPipe } from '../shared/filters/filter.pipe';
+import { UserService } from '../shared/services/user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -26,47 +27,22 @@ export class ContainerComponent implements OnInit {
   search: string = '';
   content : any;
   
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit(){
-    this._users = [
-      new User('Ali', 'Delshad'),
-      new User('Hamid', 'Sadeghi'),
-      new User('Amir', 'Olfat'),
-      new User('Keyvan', 'Nasr')
-    ]
+    this._users = this.userService.init();
   }
 
-  get users(): User[] {
-    return this._users;
+  editUser(user : User, index: number): void {
+    this.userService.edit(user,index);
+  }
+
+  addUser(user : User): void {
+    this.userService.add(user);
   }
 
   delete(index: number) {
-    this._users.splice(index, 1);
-  }
-
-  setEditUser(index: number): void {
-    this.editingIndex = index;
-    this.name = this._users[index].name;
-    this.family = this._users[index].family;
-    this.local_date = this.date_pick;
-  }
-
-  edit(): void {
-    this.setDate();
-    this._users[this.editingIndex] = new User(this.name, this.family,this.editingIndex,this.local_date);
-    this.editingIndex = undefined;
-    this.name = "";
-    this.family = "";
-    this.local_date = undefined;
-  }
-
-  add(): void {
-    this.setDate();
-    this._users.push(new User(this.name, this.family,this._users.length+1,this.local_date ));
-    this.name = "";
-    this.family = "";
-    this.local_date= undefined;
+    this.userService.delete(index);
   }
 
   setDate(): void {

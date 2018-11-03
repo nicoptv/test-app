@@ -10,6 +10,7 @@ import { HeaderComponent } from './header/header.component';
 
 
 import { NgbdModalBasic } from './container/modal/modal.component';
+import { UserService } from './shared/services/user.service';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { NgbdModalBasic } from './container/modal/modal.component';
                   ContainerComponent, 
                   HeaderComponent,
                   NgbdModalBasic ],
-  entryComponents: [NgbdModalBasic],
+  providers:    [UserService],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }

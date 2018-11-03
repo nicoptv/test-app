@@ -1,26 +1,26 @@
-import {Component,OnInit} from '@angular/core';
+import {Component} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
+import {ViewChild, ElementRef} from '@angular/core';
+import { FormGroup, FormBuilder, Validators} from "@angular/forms";
 import { User } from 'src/app/shared/models/user.model';
+import { UserService } from 'src/app/shared/services/user.service';
+
 
 @Component({
   selector: 'ngbd-modal-basic',
   templateUrl: './modal.component.html',
   styleUrls:['../container.component.css','./modal.component.css']
 })
-export class NgbdModalBasic implements OnInit {
+export class NgbdModalBasic {
   closeResult: string;
   formUser : FormGroup;
   user : User;
+  edit:boolean;
+  index : number;
 
-  constructor(private modalService: NgbModal,private formBuilder: FormBuilder) {}
+  @ViewChild('content') content: ElementRef;
 
-  ngOnInit(){
-    this.buildForm();
-  }
-
-
-  
+  constructor(private modalService: NgbModal,private formBuilder: FormBuilder, private userService:UserService) {}
 
   buildForm(user= {name: '', family:'', birthday:'', numberOfChild:0}){
     this.formUser = this.formBuilder.group({
@@ -32,8 +32,27 @@ export class NgbdModalBasic implements OnInit {
   }
 
 
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+  open(data,index) {
+    if(data) {
+      this.index = index;
+      this.buildForm(data);
+    }else{
+      this.buildForm();
+    }
+
+
+
+    this.modalService.open(this.content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result : FormGroup) => {
+      if (this.index)
+      {
+        this.user = new User(result.controls['name'].value,result.controls['family'].value,this.index,result.controls['birthday'].value,result.controls['numberOfChild'].value)
+        this.userService.edit(this.user,this.index);
+      }else
+      {
+        this.user = new User(result.controls['name'].value,result.controls['family'].value,null,result.controls['birthday'].value,result.controls['numberOfChild'].value);
+        this.userService.add(this.user);
+      }
+      this.user = new User(result.get("name").value,result.get("family").value,);
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -49,4 +68,6 @@ export class NgbdModalBasic implements OnInit {
       return  `with: ${reason}`;
     }
   }
+
+
 }
