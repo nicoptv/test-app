@@ -16,10 +16,6 @@ export class ContainerComponent implements OnInit {
 
   users: User[];
 
-  name: string;
-  family: string;
-  editingIndex: number;
-  date_pick: NgbDateStruct;
   search: string = '';
   content : any;
   

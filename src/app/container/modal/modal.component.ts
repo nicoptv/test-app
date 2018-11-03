@@ -12,10 +12,8 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls:['../container.component.css','./modal.component.css']
 })
 export class NgbdModalBasic {
-  closeResult: string;
   formUser : FormGroup;
   user : User;
-  edit:boolean;
   index : number;
 
   @ViewChild('content') content: ElementRef;
