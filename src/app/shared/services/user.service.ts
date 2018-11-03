@@ -10,6 +10,7 @@ export class UserService {
 
   constructor() { }
 
+  //init our array of User
   init() : User[]{
     this._users = [
       new User('Ali', 'Delshad'),
@@ -19,20 +20,25 @@ export class UserService {
     ]
     return this._users;
   }
-
+  //edit the user with his ID
   edit(user : User, id : number): void {
-    this._users[id] = new User(user.name, user.family,user.itemNum,user.birthday);
-  }
-
-  add(user : User): void {
     console.log(this._users);
-    this._users.push(new User(user.name, user.family,this._users.length+1,user.birthday ));
+    console.log(id);
+    this._users[id] = new User(user.name, user.family,id,user.birthday,user.numberOfChild);
   }
 
+  //add a new user on _users
+  add(user : User): void {
+    console.log('add');
+    this._users.push(new User(user.name, user.family,this._users.length+1,user.birthday,user.numberOfChild ));
+  }
+
+  //delete a user with his ID
   delete(index: number) {
     this._users.splice(index, 1);
   }
 
+  //get all user
   get users(): User[] {
     return this._users;
   }

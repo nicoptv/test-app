@@ -15,14 +15,16 @@
     <button class="hs-button primary small" (click)="content.open()">
             Add
     </button>
+
     <ngbd-modal-basic #content></ngbd-modal-basic>
     <hr>
     <div id="card_container">
-      <div *ngFor="let user of users; let i = index;" class="card" style="width: 18rem;">
+      <div *ngFor="let user of users | filter:search; let i = index;" class="card" style="width: 18rem;">
           <div class="img_profile">
               <img width="126" height="126" src="https://image.freepik.com/free-icon/user-profile-icon_318-33925.jpg" class="img-responsive  wp-post-image" alt="Charles Assaf">
               <h4 class="card-title centered">{{user.name}} {{user.family}}</h4>
               <h5 *ngIf="user.birthday" class="card-subtitle mb-2 text-muted centered">{{user.birthday.day}}/{{user.birthday.month}}/{{user.birthday.year}}</h5>
+              <h5 *ngIf="user.numberOfChild" class="card-subtitle mb-2 text-muted centered">Number of child :{{user.numberOfChild}}</h5>
           </div>
           <div class="card-body">
             <div class="task_bar">

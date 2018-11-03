@@ -1,8 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { User } from '../shared/models/user.model';
-import { LocalDate } from '../shared/models/localdate.model';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-import { FilterPipe } from '../shared/filters/filter.pipe';
 import { UserService } from '../shared/services/user.service';
 
 @Injectable({
@@ -12,17 +10,15 @@ import { UserService } from '../shared/services/user.service';
 @Component({
   selector: 'app-container',
   templateUrl: './container.component.html',
-  styleUrls: ['./container.component.css'],
-  providers: [FilterPipe]
+  styleUrls: ['./container.component.css']
 })
 export class ContainerComponent implements OnInit {
 
-  private _users: User[];
+  users: User[];
 
   name: string;
   family: string;
   editingIndex: number;
-  local_date : LocalDate;
   date_pick: NgbDateStruct;
   search: string = '';
   content : any;
@@ -30,23 +26,21 @@ export class ContainerComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(){
-    this._users = this.userService.init();
+    this.users = this.userService.init();
   }
 
+  //edit user in userService
   editUser(user : User, index: number): void {
     this.userService.edit(user,index);
   }
 
+  //add user in userService
   addUser(user : User): void {
     this.userService.add(user);
   }
 
-  delete(index: number) {
+  //delete user in userService
+  deleteUser(index: number) {
     this.userService.delete(index);
   }
-
-  setDate(): void {
-    this.local_date = this.date_pick;
-  }
-
 }

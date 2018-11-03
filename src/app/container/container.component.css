@@ -1,25 +1,30 @@
-#card_container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content:space-around;
-  
-  }
-    
-  h2{
-    font-weight: bold;
-    font-size: 1.286em;
-    color: #3149AB;
-  }
-
-  #search_text{
-    margin-left: 10px;
-  }
-
-  /*Global style*/
+   /*Global style*/
   *{
     font-family: "Lato-Black", sans-serif;
   }
+
+    
+  .hs-button{
+    padding: 1em 4em;
+    border: none;
+    border-radius: 25px;
+    background-color: #1D357C;
+    color: white;
+  }
+  
+  .hs-button:hover{
+    background-color: rgb(47, 84, 194);
+    cursor: pointer;
+  }
+  
+  
+  .task_bar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+  }
+  
 
   .centered{
     text-align: center;
@@ -30,6 +35,18 @@
     margin-top: 20px;
     margin-bottom: 20px;
   }
+
+  h2{
+    font-weight: bold;
+    font-size: 1.286em;
+    color: #3149AB;
+  }
+
+  #search_text{
+    margin-left: 10px;
+  }
+
+
   
   /*CSS CARD PROFILE*/
   #title_container{
@@ -37,6 +54,14 @@
     flex-direction: row;
     text-align: center;
   } 
+
+  #card_container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+  
+  }
   
   .card{
     margin-top: 10px;
@@ -74,28 +99,7 @@
     justify-content: center;
     align-content: center;
   }
-  
-  button.hs-button{
-    padding: 1em 4em;
-    border: none;
-    border-radius: 25px;
-    background-color: #1D357C;
-    color: white;
-  }
-  
-  button.hs-button:hover{
-    background-color: rgb(47, 84, 194);
-    cursor: pointer;
-  }
-  
-  
-  .task_bar{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-content: center;
-  }
-  
+
   
   
   
